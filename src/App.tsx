@@ -3,8 +3,13 @@ import "./App.css";
 import { Layout, Menu } from "antd";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import SinglePattern from "./SinglePattern";
-import FactoryPattern from "./FactoryPattern";
+import FactoryMethodPattern from "./FactoryMethodPattern";
+import ObserverPattern from "./ObserverPattern";
+import SimpleFactoryPattern from "./SimpleFactoryPattern";
+import AbstractFactoryPattern from "./AbstractFactoryPattern";
+import BuilderPattern from "./BuilderPattern";
 const { Content, Sider } = Layout;
+const pathname = window.location.pathname;
 class App extends React.Component {
   render() {
     return (
@@ -12,22 +17,42 @@ class App extends React.Component {
         <Layout style={{ height: "100%" }}>
           <Sider breakpoint="lg" collapsedWidth="0">
             <div className="logo" />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["single"]}>
-              <Menu.Item key="single">
+            <Menu
+              theme="dark"
+              mode="inline"
+              defaultSelectedKeys={[pathname, "single"]}
+            >
+              <Menu.Item key="/single">
                 <Link to="/single">单例模式</Link>
               </Menu.Item>
-              <Menu.Item key="factory">
-                <Link to="/factory">工厂模式</Link>
+              <Menu.Item key="/simplefactory">
+                <Link to="/simplefactory">简单工厂模式</Link>
               </Menu.Item>
-              <Menu.Item key="3">
-                <span className="nav-text">观察者模式</span>
+              <Menu.Item key="/factoryMethod">
+                <Link to="/factoryMethod">工厂方法模式</Link>
+              </Menu.Item>
+              <Menu.Item key="/abstractFactory">
+                <Link to="/abstractFactory">抽象工厂模式</Link>
+              </Menu.Item>
+              <Menu.Item key="/observer">
+                <Link to="/observer">观察者模式</Link>
+              </Menu.Item>
+              <Menu.Item key="/builder">
+                <Link to="/builder">建造者模式</Link>
               </Menu.Item>
             </Menu>
           </Sider>
           <Layout>
             <Content style={{ margin: "24px 16px 0" }}>
               <Route path="/single" component={SinglePattern} />
-              <Route path="/factory" component={FactoryPattern} />
+              <Route path="/simplefactory" component={SimpleFactoryPattern} />
+              <Route path="/factoryMethod" component={FactoryMethodPattern} />
+              <Route
+                path="/abstractFactory"
+                component={AbstractFactoryPattern}
+              />
+              <Route path="/observer" component={ObserverPattern} />
+              <Route path="/builder" component={BuilderPattern} />
             </Content>
           </Layout>
         </Layout>

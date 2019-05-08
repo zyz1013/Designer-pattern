@@ -10,6 +10,8 @@ import AbstractFactoryPattern from "./AbstractFactoryPattern";
 import BuilderPattern from "./BuilderPattern";
 import PrototypePattern from "./PrototypePattern";
 import AdapterPattern from "./AdapterPattern";
+import FacadePattern from "./FacadePattern";
+import CompositePattern from "./CompositePattern";
 const { Content, Sider } = Layout;
 const pathname = window.location.pathname;
 class App extends React.Component {
@@ -48,6 +50,12 @@ class App extends React.Component {
               <Menu.Item key="/adapter">
                 <Link to="/adapter">适配器模式</Link>
               </Menu.Item>
+              <Menu.Item key="/facade">
+                <Link to="/facade">门面模式/外观模式</Link>
+              </Menu.Item>
+              <Menu.Item key="/composite">
+                <Link to="/composite">组合模式</Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout>
@@ -63,6 +71,8 @@ class App extends React.Component {
               <Route path="/builder" component={BuilderPattern} />
               <Route path="/prototype" component={PrototypePattern} />
               <Route path="/adapter" component={AdapterPattern} />
+              <Route path="/facade" component={FacadePattern} />
+              <Route path="/composite" component={CompositePattern} />
             </Content>
           </Layout>
         </Layout>

@@ -8,6 +8,8 @@ import ObserverPattern from "./ObserverPattern";
 import SimpleFactoryPattern from "./SimpleFactoryPattern";
 import AbstractFactoryPattern from "./AbstractFactoryPattern";
 import BuilderPattern from "./BuilderPattern";
+import PrototypePattern from "./PrototypePattern";
+import AdapterPattern from "./AdapterPattern";
 const { Content, Sider } = Layout;
 const pathname = window.location.pathname;
 class App extends React.Component {
@@ -40,6 +42,12 @@ class App extends React.Component {
               <Menu.Item key="/builder">
                 <Link to="/builder">建造者模式</Link>
               </Menu.Item>
+              <Menu.Item key="/prototype">
+                <Link to="/prototype">原型模式</Link>
+              </Menu.Item>
+              <Menu.Item key="/adapter">
+                <Link to="/adapter">适配器模式</Link>
+              </Menu.Item>
             </Menu>
           </Sider>
           <Layout>
@@ -53,6 +61,8 @@ class App extends React.Component {
               />
               <Route path="/observer" component={ObserverPattern} />
               <Route path="/builder" component={BuilderPattern} />
+              <Route path="/prototype" component={PrototypePattern} />
+              <Route path="/adapter" component={AdapterPattern} />
             </Content>
           </Layout>
         </Layout>

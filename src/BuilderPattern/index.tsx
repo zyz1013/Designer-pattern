@@ -126,6 +126,7 @@ export { Meal, MealBuilder, VegBurger, Coffee, ChickenBurger, Cola };
 
 class BuliderPattern extends React.Component {
   public componentDidMount() {
+    console.log("========建造者模式==========");
     let meal1 = new MealBuilder().prepapreVegMeal();
     let meal2 = new MealBuilder().parpapreNoteVegMeal();
     console.log("====套餐1====");

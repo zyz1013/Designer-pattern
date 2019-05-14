@@ -5,6 +5,8 @@ import "./App.css";
 import DesignerPattern from "./DesignerPattern";
 import ReduxTodoDemo from "./ReduxTodoDemo";
 const { Header } = Layout;
+
+const pathName = window.location.pathname.split("/")[1];
 class App extends React.Component {
   render() {
     return (
@@ -14,14 +16,14 @@ class App extends React.Component {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={["designer"]}
+              defaultSelectedKeys={[pathName || "designer"]}
               style={{ lineHeight: "64px" }}
             >
               <Menu.Item key="designer">
-                <Link to="/designer">设计者模式</Link>
+                <Link to="/designer/classification">设计者模式</Link>
               </Menu.Item>
               <Menu.Item key="reduxTodoDemo">
-                <Link to="/reduxTodoDemo">Todo</Link>
+                <Link to="/reduxTodoDemo">Todo案例</Link>
               </Menu.Item>
               {/* <Menu.Item key="reactTool">
                 <Link to="/reactTool">chrome/react插件</Link>

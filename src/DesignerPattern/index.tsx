@@ -11,7 +11,11 @@ import PrototypePattern from "./PrototypePattern";
 import AdapterPattern from "./AdapterPattern";
 import FacadePattern from "./FacadePattern";
 import CompositePattern from "./CompositePattern";
+import Classification from "./classification";
+import StrategyPattern from "./StrategyPattern";
+import TemplateMethodPattern from "./TemplateMethodPattern";
 const { Content, Sider } = Layout;
+
 class DesignerPattern extends React.Component {
   render() {
     return (
@@ -21,7 +25,14 @@ class DesignerPattern extends React.Component {
           collapsedWidth="0"
           style={{ background: "#fff" }}
         >
-          <Menu theme="light" mode="inline" defaultSelectedKeys={["single"]}>
+          <Menu
+            theme="light"
+            mode="inline"
+            defaultSelectedKeys={["classification"]}
+          >
+            <Menu.Item key="classification">
+              <Link to="/designer/classification">设计模式分类</Link>
+            </Menu.Item>
             <Menu.Item key="single">
               <Link to="/designer/single">单例模式</Link>
             </Menu.Item>
@@ -33,9 +44,6 @@ class DesignerPattern extends React.Component {
             </Menu.Item>
             <Menu.Item key="abstractFactory">
               <Link to="/designer/abstractFactory">抽象工厂模式</Link>
-            </Menu.Item>
-            <Menu.Item key="observer">
-              <Link to="/designer/observer">观察者模式</Link>
             </Menu.Item>
             <Menu.Item key="builder">
               <Link to="/designer/builder">建造者模式</Link>
@@ -52,10 +60,20 @@ class DesignerPattern extends React.Component {
             <Menu.Item key="composite">
               <Link to="/designer/composite">组合模式</Link>
             </Menu.Item>
+            <Menu.Item key="strategy">
+              <Link to="/designer/strategy">策略模式</Link>
+            </Menu.Item>
+            <Menu.Item key="template">
+              <Link to="/designer/template">模板方法模式</Link>
+            </Menu.Item>
+            <Menu.Item key="observer">
+              <Link to="/designer/observer">观察者模式</Link>
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout>
           <Content style={{ margin: "24px 16px 0" }}>
+            <Route path="/designer/classification" component={Classification} />
             <Route path="/designer/single" component={SinglePattern} />
             <Route
               path="/designer/simplefactory"
@@ -75,6 +93,11 @@ class DesignerPattern extends React.Component {
             <Route path="/designer/adapter" component={AdapterPattern} />
             <Route path="/designer/facade" component={FacadePattern} />
             <Route path="/designer/composite" component={CompositePattern} />
+            <Route path="/designer/strategy" component={StrategyPattern} />
+            <Route
+              path="/designer/template"
+              component={TemplateMethodPattern}
+            />
           </Content>
         </Layout>
       </Layout>

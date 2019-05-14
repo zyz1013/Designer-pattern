@@ -69,6 +69,12 @@ class ObserverPattern extends React.Component {
     return (
       <pre>
         {`
+        思路：
+        指定发布者；
+        给发布者添加一个缓存列表，用于存放回调函数以便通知订阅者；
+        最后发布消息的时候，发布者会遍历这个缓存列表，依次触发里面存放的订阅者回调函数
+
+
         // 发布类
         class Subject {
           private Observers: Observer[] = new Array<Observer>();

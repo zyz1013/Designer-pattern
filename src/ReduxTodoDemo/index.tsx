@@ -18,23 +18,23 @@ for (let i = 0; i < reducerKeys.length; i++) {
   finnalReducers[key] = reducers[key];
 }
 
-const combination = (state: any, action: any) => {
-  let hasChanged = false;
-  const nextState: any = {};
-  for (let i = 0; i < reducerKeys.length; i++) {
-    const key = reducerKeys[i];
-    const reducer = finnalReducers[key];
-    const prevStateForKey = state[key];
-    const nextStateForKey = reducer(prevStateForKey, action);
-    nextState[key] = nextStateForKey;
-    hasChanged = hasChanged || nextStateForKey !== prevStateForKey;
-  }
-  return hasChanged ? nextState : state;
-};
-let currentState: any;
-const dispatch = (action: any) => {
-  currentState = combination(currentState, action);
-};
+// const combination = (state: any, action: any) => {
+//   let hasChanged = false;
+//   const nextState: any = {};
+//   for (let i = 0; i < reducerKeys.length; i++) {
+//     const key = reducerKeys[i];
+//     const reducer = finnalReducers[key];
+//     const prevStateForKey = state[key];
+//     const nextStateForKey = reducer(prevStateForKey, action);
+//     nextState[key] = nextStateForKey;
+//     hasChanged = hasChanged || nextStateForKey !== prevStateForKey;
+//   }
+//   return hasChanged ? nextState : state;
+// };
+// let currentState: any;
+// const dispatch = (action: any) => {
+//   currentState = combination(currentState, action);
+// };
 
 class ReduxTodoDemo extends React.Component {
   render() {

@@ -1,4 +1,5 @@
 import React from "react";
+import img from "./image.png";
 // 发布类
 class Subject {
   private Observers: Observer[] = new Array<Observer>();
@@ -67,8 +68,9 @@ class ObserverPattern extends React.Component {
   }
   public render() {
     return (
-      <pre>
-        {`
+      <div>
+        <pre>
+          {`
         思路：
         指定发布者；
         给发布者添加一个缓存列表，用于存放回调函数以便通知订阅者；
@@ -138,7 +140,9 @@ class ObserverPattern extends React.Component {
         new BObserver(subjcet);
         subjcet.setState(1000);
       `}
-      </pre>
+        </pre>
+        <img src={img} width="100%" />
+      </div>
     );
   }
 }

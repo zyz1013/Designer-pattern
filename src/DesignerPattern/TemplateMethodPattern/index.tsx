@@ -116,6 +116,50 @@ class TemplateMethodPattern extends React.PureComponent<
               let requesterB: RequesterBase<ClassB> = new RequestForServerB("server B url");
               requesterA.requestData();
               requesterB.requestData();
+
+
+              ========================项目中应用====================
+              export default async <D = any>(url: string, init?: RequestInit): Promise<D> => {
+                try {
+                  const myInit: RequestInit = ObjectUtils.getOrDefault(init, {});
+                  const myHeaders: any = ObjectUtils.getOrDefault(myInit.headers, {});
+                  myHeaders.userId = ObjectUtils.getOrDefault(myHeaders.userId, userId);
+                  myInit.headers = myHeaders;
+                  myInit.credentials = ObjectUtils.getOrDefault(myInit.credentials, "include");
+                  const response = await fetch(url, myInit);
+                  if (response.ok) {
+                    const json = await response.json();
+                    const result = plainToClass<RestResponse<any>, object>(RestResponse, json);
+                    // if ((result.code === "0" || result.code === 0) && !ObjectUtils.isNullOrUndefined(result.data)) {
+                    //   return new Promise<D>((resolve, reject) => resolve(result.data));
+                    // }
+                    if (result.code === "0" || result.code === 0) {
+                      return new Promise<D>((resolve, reject) => resolve(result.data));
+                    }
+                    return new Promise<D>((resolve, reject) => reject(result.message));
+                  }
+                  return new Promise<D>((resolve, reject) => reject(response.statusText));
+                } catch (error) {
+                  return new Promise<D>((resolve, reject) => reject(error));
+                }
+              };
+              
+  
+  
+              public static getIssuerInfo(issuerId: number): Promise<BondComInfoDoc> {
+                return apiFetch<BondComInfoDoc>(\`\${apiUrl}/bond-web/api/bond/issuers/\${issuerId}\`\);
+              }
+              
+              
+              public static getBondUniCodeList(params: GetBondUniCodeListParams): Promise<number[]> {
+                const { query, limit, type } = params;
+                return apiFetch(
+                  \`\${apiUrl}/bond-web/api/bond/entity/quote/search?userId=\${userId}&query=\${query}&limit=\${limit || 200}&type=\${
+                    typeof type === "undefined" ? 1 : type
+                  }\`\
+                );
+              }
+
           `}
         </pre>
       </div>

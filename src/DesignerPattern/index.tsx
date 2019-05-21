@@ -18,6 +18,7 @@ const { Content, Sider } = Layout;
 
 class DesignerPattern extends React.Component {
   render() {
+    const defaultType = window.location.hash.substr(1);
     return (
       <Layout style={{ height: "100%" }}>
         <Sider
@@ -25,48 +26,44 @@ class DesignerPattern extends React.Component {
           collapsedWidth="0"
           style={{ background: "#fff" }}
         >
-          <Menu
-            theme="light"
-            mode="inline"
-            defaultSelectedKeys={["classification"]}
-          >
-            <Menu.Item key="classification">
+          <Menu theme="light" mode="inline" defaultSelectedKeys={[defaultType]}>
+            <Menu.Item key="/designer/classification">
               <Link to="/designer/classification">设计模式分类</Link>
             </Menu.Item>
-            <Menu.Item key="single">
+            <Menu.Item key="/designer/single">
               <Link to="/designer/single">单例模式</Link>
             </Menu.Item>
-            <Menu.Item key="simplefactory">
+            <Menu.Item key="/designer/simplefactory">
               <Link to="/designer/simplefactory">简单工厂模式</Link>
             </Menu.Item>
-            <Menu.Item key="factoryMethod">
+            <Menu.Item key="/designer/factoryMethod">
               <Link to="/designer/factoryMethod">工厂方法模式</Link>
             </Menu.Item>
-            <Menu.Item key="abstractFactory">
+            <Menu.Item key="/designer/abstractFactory">
               <Link to="/designer/abstractFactory">抽象工厂模式</Link>
             </Menu.Item>
-            <Menu.Item key="builder">
+            <Menu.Item key="/designer/builder">
               <Link to="/designer/builder">建造者模式</Link>
             </Menu.Item>
-            <Menu.Item key="prototype">
+            <Menu.Item key="/designer/prototype">
               <Link to="/designer/prototype">原型模式</Link>
             </Menu.Item>
-            <Menu.Item key="adapter">
+            <Menu.Item key="/designer/adapter">
               <Link to="/designer/adapter">适配器模式</Link>
             </Menu.Item>
-            <Menu.Item key="facade">
+            <Menu.Item key="/designer/facade">
               <Link to="/designer/facade">门面模式/外观模式</Link>
             </Menu.Item>
-            <Menu.Item key="composite">
+            <Menu.Item key="/designer/composite">
               <Link to="/designer/composite">组合模式</Link>
             </Menu.Item>
-            <Menu.Item key="strategy">
+            <Menu.Item key="/designer/strategy">
               <Link to="/designer/strategy">策略模式</Link>
             </Menu.Item>
-            <Menu.Item key="template">
+            <Menu.Item key="/designer/template">
               <Link to="/designer/template">模板方法模式</Link>
             </Menu.Item>
-            <Menu.Item key="observer">
+            <Menu.Item key="/designer/observer">
               <Link to="/designer/observer">观察者模式</Link>
             </Menu.Item>
           </Menu>

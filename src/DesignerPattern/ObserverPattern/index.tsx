@@ -141,7 +141,7 @@ class ObserverPattern extends React.Component {
         subjcet.setState(1000);
       `}
         </pre>
-        <img src={img} width="100%" />
+        <img src={img} width="100%" alt="" />
       </div>
     );
   }

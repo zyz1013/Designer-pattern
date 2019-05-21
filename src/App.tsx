@@ -1,12 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import "./App.css";
 import DesignerPattern from "./DesignerPattern";
 import ReduxTodoDemo from "./ReduxTodoDemo";
+import ReactVirtualized from "./ReactVirtualized";
 const { Header } = Layout;
 
-const pathName = window.location.pathname.split("/")[1];
 class App extends React.Component {
   render() {
     return (
@@ -16,23 +16,27 @@ class App extends React.Component {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={[pathName || "designer"]}
+              defaultSelectedKeys={["designer"]}
               style={{ lineHeight: "64px" }}
             >
               <Menu.Item key="designer">
                 <Link to="/designer/classification">设计者模式</Link>
               </Menu.Item>
               <Menu.Item key="reduxTodoDemo">
-                <Link to="/reduxTodoDemo">Todo案例</Link>
+                <Link to="/reduxTodoDemo">Redux(Todo)示例</Link>
               </Menu.Item>
-              {/* <Menu.Item key="reactTool">
-                <Link to="/reactTool">chrome/react插件</Link>
-              </Menu.Item> */}
+              <Menu.Item key="reactVirtualized">
+                <Link to="/reactVirtualized/grid">React virtualized 示例</Link>
+              </Menu.Item>
             </Menu>
           </Header>
           <Layout>
-            <Route path="/designer" component={DesignerPattern} />
-            <Route path="/reduxTodoDemo" component={ReduxTodoDemo} />
+            <Switch>
+              <Route path="/" exact={true} component={DesignerPattern} />
+              <Route path="/designer/:type" component={DesignerPattern} />
+              <Route path="/reduxTodoDemo" component={ReduxTodoDemo} />
+              <Route path="/reactVirtualized" component={ReactVirtualized} />
+            </Switch>
           </Layout>
         </Layout>
       </Router>

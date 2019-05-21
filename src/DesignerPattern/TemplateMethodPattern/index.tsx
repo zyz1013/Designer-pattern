@@ -147,7 +147,7 @@ class TemplateMethodPattern extends React.PureComponent<
   
   
               public static getIssuerInfo(issuerId: number): Promise<BondComInfoDoc> {
-                return apiFetch<BondComInfoDoc>(\`\${apiUrl}/bond-web/api/bond/issuers/\${issuerId}\`\);
+                return apiFetch<BondComInfoDoc>(\`\${apiUrl}/bond-web/api/bond/issuers/\${issuerId}\`);
               }
               
               
@@ -156,7 +156,7 @@ class TemplateMethodPattern extends React.PureComponent<
                 return apiFetch(
                   \`\${apiUrl}/bond-web/api/bond/entity/quote/search?userId=\${userId}&query=\${query}&limit=\${limit || 200}&type=\${
                     typeof type === "undefined" ? 1 : type
-                  }\`\
+                  }\`
                 );
               }
 

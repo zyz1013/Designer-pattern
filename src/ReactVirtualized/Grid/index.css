@@ -1,0 +1,11 @@
+.dm_ReactVirtualized_Grid {
+  background: #18181a;
+}
+.dm_ReactVirtualized_Grid_Row {
+  background: #1c1d1f;
+  color: #e5e5e5;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -26,7 +26,9 @@ class App extends React.Component {
                 <Link to="/reduxTodoDemo">Redux(Todo)示例</Link>
               </Menu.Item>
               <Menu.Item key="reactVirtualized">
-                <Link to="/reactVirtualized/grid">React virtualized 示例</Link>
+                <Link to="/reactVirtualized/default">
+                  React virtualized 示例
+                </Link>
               </Menu.Item>
             </Menu>
           </Header>

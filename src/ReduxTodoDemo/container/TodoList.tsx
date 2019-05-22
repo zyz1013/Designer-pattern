@@ -49,7 +49,6 @@ class TodoList extends React.Component<PageProps, PageState> {
     }
   }
   public render() {
-    console.log(this.props.todoList);
     return (
       <div className="todo-list">
         {this.props.todoList.map(todo => {

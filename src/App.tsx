@@ -1,49 +1,82 @@
 import React from "react";
-import { HashRouter as Router, Route, Link, Switch } from "react-router-dom";
-import { Layout, Menu } from "antd";
+import {
+  Route,
+  Switch,
+  NavLink,
+  RouteComponentProps,
+  withRouter
+} from "react-router-dom";
+import { Layout } from "antd";
 import "./App.css";
 import DesignerPattern from "./DesignerPattern";
 import ReduxTodoDemo from "./ReduxTodoDemo";
 import ReactVirtualized from "./ReactVirtualized";
-const { Header } = Layout;
 
-class App extends React.Component {
+class HeaderNav extends React.Component {
   public render() {
-    const defaultType = window.location.hash.substr(1);
     return (
-      <Router>
-        <Layout style={{ height: "100%" }}>
-          <Header className="header">
-            <Menu
-              theme="dark"
-              mode="horizontal"
-              defaultSelectedKeys={[defaultType]}
-              style={{ lineHeight: "64px" }}
-            >
-              <Menu.Item key="/designer/classification">
-                <Link to="/designer/classification">设计者模式</Link>
-              </Menu.Item>
-              <Menu.Item key="/reduxTodoDemo">
-                <Link to="/reduxTodoDemo">Redux示例</Link>
-              </Menu.Item>
-              <Menu.Item key="/reactVirtualized/default">
-                <Link to="/reactVirtualized/default">
-                  ReactVirtualized 示例
-                </Link>
-              </Menu.Item>
-            </Menu>
-          </Header>
-          <Layout>
-            <Switch>
-              <Route path="/" exact={true} component={DesignerPattern} />
-              <Route path="/designer" component={DesignerPattern} />
-              <Route path="/reduxTodoDemo" component={ReduxTodoDemo} />
-              <Route path="/reactVirtualized" component={ReactVirtualized} />
-            </Switch>
-          </Layout>
-        </Layout>
-      </Router>
+      <div className="header_nav">
+        <NavLink to="/designer" activeClassName="active">
+          设计者模式示例
+        </NavLink>
+        <NavLink to="/reduxTodoDemo" activeClassName="active">
+          Redux示例
+        </NavLink>
+        <NavLink to="/reactVirtualized" activeClassName="active">
+          ReactVirtualized 示例
+        </NavLink>
+      </div>
     );
   }
 }
-export default App;
+interface PageProps extends RouteComponentProps {}
+interface PageState {}
+class App extends React.Component<PageProps, PageState> {
+  public constructor(props: PageProps) {
+    super(props);
+  }
+  public componentDidMount() {}
+
+  public render() {
+    const path = window.location.hash.substr(1).split("/");
+    if (path[1] === "") {
+      this.props.history.push("/designer/classification");
+    }
+    if (path[1] === "designer") {
+      if (!path[2]) {
+        this.props.history.push("/designer/classification");
+      }
+    }
+    if (path[1] === "reactVirtualized") {
+      if (!path[2]) {
+        this.props.history.push("/reactVirtualized/default");
+      }
+    }
+    return (
+      <Layout
+        style={{ height: "100%", background: "#000", overflow: "hidden" }}
+      >
+        <HeaderNav />
+        <div
+          style={{
+            marginTop: "4px",
+            display: "flex",
+            flexDirection: "row",
+            flex: "auto"
+          }}
+        >
+          <Switch>
+            <Route path="/" exact={true} component={DesignerPattern} />
+            <Route path="/designer/:type" component={DesignerPattern} />
+            <Route path="/reduxTodoDemo" component={ReduxTodoDemo} />
+            <Route
+              path="/reactVirtualized/:type"
+              component={ReactVirtualized}
+            />
+          </Switch>
+        </div>
+      </Layout>
+    );
+  }
+}
+export default withRouter(App);

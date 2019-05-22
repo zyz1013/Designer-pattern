@@ -40,20 +40,21 @@ class ReduxTodoDemo extends React.Component {
   render() {
     return (
       <div className="TodoWrapper">
-        <div>React-Redux</div>
-        <AddTodo />
-        <TodoList />
-        <Footer />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <pre>
-          <p>
-            combineReducers的基本原理，以及如何根据key处理对应的state数据，合并成一个新的state对象
-          </p>
-          {`
+        <div>
+          <div>React-Redux</div>
+          <AddTodo />
+          <TodoList />
+          <Footer />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <pre>
+            <p>
+              combineReducers的基本原理，以及如何根据key处理对应的state数据，合并成一个新的state对象
+            </p>
+            {`
           const reducers: any = {
             reducersA: () => {
               console.log("返回了stateA部分");
@@ -85,20 +86,21 @@ class ReduxTodoDemo extends React.Component {
             return hasChanged ? nextState : state;
           }; 
           `}
-        </pre>
-        <p>
-          有多个reducer，action是如何找到对应的reducer进行状态的转换？
-          store根据dispatch之后返回的action对象中的 type
-          属性来执行相关任务，也就是说只要带有相同 type
-          属性值的reducer都会执行。
-        </p>
-        <pre>{`
+          </pre>
+          <p>
+            有多个reducer，action是如何找到对应的reducer进行状态的转换？
+            store根据dispatch之后返回的action对象中的 type
+            属性来执行相关任务，也就是说只要带有相同 type
+            属性值的reducer都会执行。
+          </p>
+          <pre>{`
           let currentState: any;
           const dispatch = (action: any) => {
              currentState = combination(currentState, action);
           };
           
         `}</pre>
+        </div>
       </div>
     );
   }

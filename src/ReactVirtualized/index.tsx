@@ -1,64 +1,64 @@
 import React from "react";
-import { Layout, Menu } from "antd";
-import { Link, Route } from "react-router-dom";
+import { Layout } from "antd";
+import { Route, NavLink } from "react-router-dom";
 import GridCompontent from "./Grid";
 import ListCompontent from "./List";
 import DefaultCompontent from "./Default";
 import AutoSizerCompontent from "./AutoSizer";
 import CellMeasurerCompontent from "./CellMeasurer";
 import InfiniteLoaderCompontent from "./InfiniteLoader";
-const { Sider } = Layout;
+const { Content } = Layout;
+class SiderNav extends React.Component {
+  public render() {
+    return (
+      <div className="sider_nav">
+        <NavLink to="/reactVirtualized/default">Default</NavLink>
+        <NavLink to="/reactVirtualized/grid">Grid</NavLink>
+        <NavLink to="/reactVirtualized/list">List</NavLink>
+        <NavLink to="/reactVirtualized/autoSizer">AutoSizer</NavLink>
+        <NavLink to="/reactVirtualized/cellMeasurer">CellMeasurer</NavLink>
+        <NavLink to="/reactVirtualized/infiniteLoader">InfiniteLoader</NavLink>
+      </div>
+    );
+  }
+}
+
 class ReactVirtualized extends React.Component {
   public render() {
     return (
-      <Layout style={{ height: "100%" }}>
-        <Sider
-          breakpoint="lg"
-          collapsedWidth="0"
-          style={{ background: "#fff" }}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flex: "auto"
+        }}
+      >
+        <SiderNav />
+        <Layout
+          style={{ marginLeft: "10px ", overflowY: "auto", background: "#000" }}
         >
-          <Menu theme="light" mode="inline" defaultSelectedKeys={["default"]}>
-            <Menu.Item key="default">
-              <Link to="/reactVirtualized/default">Default</Link>
-            </Menu.Item>
-            <Menu.Item key="grid">
-              <Link to="/reactVirtualized/grid">Grid</Link>
-            </Menu.Item>
-            <Menu.Item key="list">
-              <Link to="/reactVirtualized/list">List</Link>
-            </Menu.Item>
-            <Menu.Item key="autoSizer">
-              <Link to="/reactVirtualized/autoSizer">AutoSizer</Link>
-            </Menu.Item>
-            <Menu.Item key="cellMeasurer">
-              <Link to="/reactVirtualized/cellMeasurer">CellMeasurer</Link>
-            </Menu.Item>
-            <Menu.Item key="infiniteLoader">
-              <Link to="/reactVirtualized/infiniteLoader">InfiniteLoader</Link>
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout>
-          <Route
-            path="/reactVirtualized/default"
-            component={DefaultCompontent}
-          />
-          <Route path="/reactVirtualized/grid" component={GridCompontent} />
-          <Route path="/reactVirtualized/list" component={ListCompontent} />
-          <Route
-            path="/reactVirtualized/autoSizer"
-            component={AutoSizerCompontent}
-          />
-          <Route
-            path="/reactVirtualized/cellMeasurer"
-            component={CellMeasurerCompontent}
-          />
-          <Route
-            path="/reactVirtualized/infiniteLoader"
-            component={InfiniteLoaderCompontent}
-          />
+          <Content style={{ background: "#262629", color: "#C8C8C8" }}>
+            <Route
+              path="/reactVirtualized/default"
+              component={DefaultCompontent}
+            />
+            <Route path="/reactVirtualized/grid" component={GridCompontent} />
+            <Route path="/reactVirtualized/list" component={ListCompontent} />
+            <Route
+              path="/reactVirtualized/autoSizer"
+              component={AutoSizerCompontent}
+            />
+            <Route
+              path="/reactVirtualized/cellMeasurer"
+              component={CellMeasurerCompontent}
+            />
+            <Route
+              path="/reactVirtualized/infiniteLoader"
+              component={InfiniteLoaderCompontent}
+            />
+          </Content>
         </Layout>
-      </Layout>
+      </div>
     );
   }
 }
